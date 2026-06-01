@@ -58,7 +58,7 @@ def _handle_brightness(args: argparse.Namespace, client: AwtrixClient, i18n: I18
         print(i18n.t("brightness_range_error"))
         return 1
     try:
-        client.update_settings({"BRI": args.value})
+        client.update_settings({"BRI": args.value, "ABRI": False})
         print(i18n.t("brightness_set", value=args.value))
         return 0
     except AwtrixConnectionError as exc:
