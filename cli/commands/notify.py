@@ -8,6 +8,7 @@ from awtrix.i18n import I18n
 
 def register(sub: argparse._SubParsersAction, i18n: I18n) -> None:
     p = sub.add_parser("notify", help=i18n.t("help_notify"))
+    p._example = i18n.t("example_notify")
     p.add_argument("text", help=i18n.t("help_notify_text"))
     p.add_argument("--color", nargs=3, type=int, metavar=("R", "G", "B"),
                    help=i18n.t("help_notify_color"))

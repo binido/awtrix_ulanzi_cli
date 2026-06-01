@@ -79,5 +79,15 @@
   "help_indicator": "Управление индикаторным светодиодом (1, 2 или 3)",
   "help_indicator_rgb": "Три значения RGB (0-255) или 'off'",
   "help_indicator_blink": "Интервал мигания в миллисекундах",
-  "help_indicator_fade": "Длительность затухания в миллисекундах"
+  "help_indicator_fade": "Длительность затухания в миллисекундах",
+
+  "arg_example": "Пример: {example}",
+  "example_power": "power on  |  power off",
+  "example_brightness": "brightness 128",
+  "example_settings_get": "settings get BRI",
+  "example_settings_set": "settings set BRI 200  |  settings set ABRI true",
+  "example_notify": "notify \"Привет!\" --color 255 165 0 --duration 10",
+  "example_app": "app next  |  app list  |  app switch clock",
+  "example_app_switch": "app switch clock",
+  "example_indicator": "indicator 1 255 0 0  |  indicator 2 off  |  indicator 3 0 255 0 --blink 500"
 }

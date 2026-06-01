@@ -10,6 +10,7 @@ from awtrix.i18n import I18n
 def register(sub: argparse._SubParsersAction, i18n: I18n) -> None:
     p_bri = sub.add_parser("brightness", help=i18n.t("help_brightness"))
     p_bri.add_argument("value", type=int, metavar="0-255")
+    p_bri._example = i18n.t("example_brightness")
     p_bri.set_defaults(func=_handle_brightness)
 
     p_settings = sub.add_parser("settings", help=i18n.t("help_settings"))
@@ -17,11 +18,13 @@ def register(sub: argparse._SubParsersAction, i18n: I18n) -> None:
 
     p_get = settings_sub.add_parser("get", help=i18n.t("help_settings_get"))
     p_get.add_argument("key", nargs="?", default=None, metavar="KEY")
+    p_get._example = i18n.t("example_settings_get")
     p_get.set_defaults(func=_handle_settings_get)
 
     p_set = settings_sub.add_parser("set", help=i18n.t("help_settings_set"))
     p_set.add_argument("key", metavar="KEY")
     p_set.add_argument("value", metavar="VALUE")
+    p_set._example = i18n.t("example_settings_set")
     p_set.set_defaults(func=_handle_settings_set)
 
     p_settings.set_defaults(func=_handle_settings_no_cmd)

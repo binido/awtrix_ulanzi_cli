@@ -7,6 +7,7 @@ from awtrix.client import AwtrixClient, AwtrixConnectionError
 from awtrix.config import ConfigManager
 from awtrix.i18n import I18n
 from cli.init_flow import run_init
+from cli.parser import make_parser_class
 import cli.commands.apps as cmd_apps
 import cli.commands.display as cmd_display
 import cli.commands.notify as cmd_notify
@@ -14,7 +15,8 @@ import cli.commands.power as cmd_power
 
 
 def _build_parser(i18n: I18n) -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(
+    LocalizedParser = make_parser_class(i18n)
+    parser = LocalizedParser(
         prog="awtrix",
         description=i18n.t("help_prog_desc"),
     )

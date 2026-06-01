@@ -79,5 +79,15 @@
   "help_indicator": "Control an indicator LED (1, 2, or 3)",
   "help_indicator_rgb": "Three RGB values (0-255) or 'off'",
   "help_indicator_blink": "Blink interval in milliseconds",
-  "help_indicator_fade": "Fade duration in milliseconds"
+  "help_indicator_fade": "Fade duration in milliseconds",
+
+  "arg_example": "Example: {example}",
+  "example_power": "power on  |  power off",
+  "example_brightness": "brightness 128",
+  "example_settings_get": "settings get BRI",
+  "example_settings_set": "settings set BRI 200  |  settings set ABRI true",
+  "example_notify": "notify \"Hello!\" --color 255 165 0 --duration 10",
+  "example_app": "app next  |  app list  |  app switch clock",
+  "example_app_switch": "app switch clock",
+  "example_indicator": "indicator 1 255 0 0  |  indicator 2 off  |  indicator 3 0 255 0 --blink 500"
 }

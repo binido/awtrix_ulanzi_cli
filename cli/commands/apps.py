@@ -8,6 +8,7 @@ from awtrix.i18n import I18n
 
 def register(sub: argparse._SubParsersAction, i18n: I18n) -> None:
     p_app = sub.add_parser("app", help=i18n.t("help_app"))
+    p_app._example = i18n.t("example_app")
     app_sub = p_app.add_subparsers(dest="app_cmd", metavar="<next|prev|list|switch>")
 
     app_sub.add_parser("next",   help=i18n.t("help_app_next")).set_defaults(func=_handle_next)
@@ -16,11 +17,13 @@ def register(sub: argparse._SubParsersAction, i18n: I18n) -> None:
 
     p_switch = app_sub.add_parser("switch", help=i18n.t("help_app_switch"))
     p_switch.add_argument("name", metavar="NAME")
+    p_switch._example = i18n.t("example_app_switch")
     p_switch.set_defaults(func=_handle_switch)
 
     p_app.set_defaults(func=_handle_app_no_cmd)
 
     p_ind = sub.add_parser("indicator", help=i18n.t("help_indicator"))
+    p_ind._example = i18n.t("example_indicator")
     p_ind.add_argument("index", type=int, choices=[1, 2, 3], metavar="<1|2|3>")
     p_ind.add_argument("rgb_or_off", nargs="+", metavar="R G B | off",
                        help=i18n.t("help_indicator_rgb"))
