@@ -97,10 +97,15 @@ uv run awtrix reboot
 
 ### `brightness` — Brightness
 
-Value from `0` to `255`.
-
 ```bash
+# Set a fixed value (0-255)
 uv run awtrix brightness 128
+
+# Enable auto-brightness
+uv run awtrix brightness --auto
+
+# Disable auto-brightness
+uv run awtrix brightness --auto off
 ```
 
 ### `settings` — Device settings

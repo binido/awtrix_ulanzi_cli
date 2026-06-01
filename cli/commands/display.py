@@ -9,7 +9,9 @@ from awtrix.i18n import I18n
 
 def register(sub: argparse._SubParsersAction, i18n: I18n) -> None:
     p_bri = sub.add_parser("brightness", help=i18n.t("help_brightness"))
-    p_bri.add_argument("value", type=int, metavar="0-255")
+    p_bri.add_argument("value", type=int, metavar="0-255", nargs="?", default=None)
+    p_bri.add_argument("--auto", nargs="?", const="on", default=None, metavar="on|off",
+                       help=i18n.t("help_brightness_auto"))
     p_bri._example = i18n.t("example_brightness")
     p_bri.set_defaults(func=_handle_brightness)
 
@@ -31,6 +33,27 @@ def register(sub: argparse._SubParsersAction, i18n: I18n) -> None:
 
 
 def _handle_brightness(args: argparse.Namespace, client: AwtrixClient, i18n: I18n) -> int:
+    has_value = args.value is not None
+    has_auto  = args.auto is not None
+
+    if not has_value and not has_auto:
+        print(i18n.t("brightness_usage"))
+        return 1
+
+    if has_value and has_auto:
+        print(i18n.t("brightness_conflict"))
+        return 1
+
+    if has_auto:
+        enable = args.auto.lower() not in ("off", "false", "0")
+        try:
+            client.update_settings({"ABRI": enable})
+            print(i18n.t("auto_brightness_set", state=args.auto.lower()))
+            return 0
+        except AwtrixConnectionError as exc:
+            print(i18n.t("connect_error", error=str(exc)))
+            return 1
+
     if not 0 <= args.value <= 255:
         print(i18n.t("brightness_range_error"))
         return 1
