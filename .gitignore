@@ -13,3 +13,6 @@ dist/
 # App config
 config.json
 .awtrix_history
+
+# Claude
+CLAUDE.md
