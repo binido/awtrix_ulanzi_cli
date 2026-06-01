@@ -6,28 +6,28 @@ from awtrix.client import AwtrixClient, AwtrixConnectionError
 from awtrix.i18n import I18n
 
 
-def register(sub: argparse._SubParsersAction) -> None:
-    p_app = sub.add_parser("app", help="Navigate apps on the device")
+def register(sub: argparse._SubParsersAction, i18n: I18n) -> None:
+    p_app = sub.add_parser("app", help=i18n.t("help_app"))
     app_sub = p_app.add_subparsers(dest="app_cmd", metavar="<next|prev|list|switch>")
 
-    app_sub.add_parser("next", help="Switch to next app").set_defaults(func=_handle_next)
-    app_sub.add_parser("prev", help="Switch to previous app").set_defaults(func=_handle_prev)
-    app_sub.add_parser("list", help="List apps in rotation").set_defaults(func=_handle_list)
+    app_sub.add_parser("next",   help=i18n.t("help_app_next")).set_defaults(func=_handle_next)
+    app_sub.add_parser("prev",   help=i18n.t("help_app_prev")).set_defaults(func=_handle_prev)
+    app_sub.add_parser("list",   help=i18n.t("help_app_list")).set_defaults(func=_handle_list)
 
-    p_switch = app_sub.add_parser("switch", help="Jump to a specific app by name")
+    p_switch = app_sub.add_parser("switch", help=i18n.t("help_app_switch"))
     p_switch.add_argument("name", metavar="NAME")
     p_switch.set_defaults(func=_handle_switch)
 
     p_app.set_defaults(func=_handle_app_no_cmd)
 
-    p_ind = sub.add_parser("indicator", help="Control an indicator LED (1, 2, or 3)")
+    p_ind = sub.add_parser("indicator", help=i18n.t("help_indicator"))
     p_ind.add_argument("index", type=int, choices=[1, 2, 3], metavar="<1|2|3>")
     p_ind.add_argument("rgb_or_off", nargs="+", metavar="R G B | off",
-                       help="Three RGB values (0-255) or 'off'")
+                       help=i18n.t("help_indicator_rgb"))
     p_ind.add_argument("--blink", type=int, default=0, metavar="MS",
-                       help="Blink interval in milliseconds")
+                       help=i18n.t("help_indicator_blink"))
     p_ind.add_argument("--fade", type=int, default=0, metavar="MS",
-                       help="Fade duration in milliseconds")
+                       help=i18n.t("help_indicator_fade"))
     p_ind.set_defaults(func=_handle_indicator)
 
 

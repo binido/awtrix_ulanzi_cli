@@ -6,12 +6,12 @@ from awtrix.client import AwtrixClient, AwtrixConnectionError
 from awtrix.i18n import I18n
 
 
-def register(sub: argparse._SubParsersAction) -> None:
-    p_power = sub.add_parser("power", help="Turn the display on or off")
+def register(sub: argparse._SubParsersAction, i18n: I18n) -> None:
+    p_power = sub.add_parser("power", help=i18n.t("help_power"))
     p_power.add_argument("state", choices=["on", "off"])
     p_power.set_defaults(func=_handle_power)
 
-    p_reboot = sub.add_parser("reboot", help="Reboot the device")
+    p_reboot = sub.add_parser("reboot", help=i18n.t("help_reboot"))
     p_reboot.set_defaults(func=_handle_reboot)
 
 

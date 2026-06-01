@@ -13,23 +13,23 @@ import cli.commands.notify as cmd_notify
 import cli.commands.power as cmd_power
 
 
-def _build_parser() -> argparse.ArgumentParser:
+def _build_parser(i18n: I18n) -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         prog="awtrix",
-        description="CLI utility for AWTRIX 3 / Ulanzi smart clock",
+        description=i18n.t("help_prog_desc"),
     )
     sub = parser.add_subparsers(dest="command", metavar="<command>")
 
-    sub.add_parser("init", help="Run the setup wizard")
-    sub.add_parser("shell", help="Start interactive shell (default when no command given)")
+    sub.add_parser("init",  help=i18n.t("help_init"))
+    sub.add_parser("shell", help=i18n.t("help_shell"))
 
-    p_status = sub.add_parser("status", help="Show device stats")
+    p_status = sub.add_parser("status", help=i18n.t("help_status"))
     p_status.set_defaults(func=_handle_status)
 
-    cmd_power.register(sub)
-    cmd_display.register(sub)
-    cmd_notify.register(sub)
-    cmd_apps.register(sub)
+    cmd_power.register(sub, i18n)
+    cmd_display.register(sub, i18n)
+    cmd_notify.register(sub, i18n)
+    cmd_apps.register(sub, i18n)
 
     return parser
 
@@ -52,7 +52,7 @@ def main() -> None:
     config = ConfigManager()
     i18n = I18n(config.config.language)
 
-    parser = _build_parser()
+    parser = _build_parser(i18n)
     args = parser.parse_args()
 
     if not config.config.is_initialized() or args.command == "init":

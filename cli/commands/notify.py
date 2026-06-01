@@ -6,23 +6,23 @@ from awtrix.client import AwtrixClient, AwtrixConnectionError
 from awtrix.i18n import I18n
 
 
-def register(sub: argparse._SubParsersAction) -> None:
-    p = sub.add_parser("notify", help="Send a notification to the device")
-    p.add_argument("text", help="Text to display")
+def register(sub: argparse._SubParsersAction, i18n: I18n) -> None:
+    p = sub.add_parser("notify", help=i18n.t("help_notify"))
+    p.add_argument("text", help=i18n.t("help_notify_text"))
     p.add_argument("--color", nargs=3, type=int, metavar=("R", "G", "B"),
-                   help="Text color (default: white)")
+                   help=i18n.t("help_notify_color"))
     p.add_argument("--bg-color", nargs=3, type=int, metavar=("R", "G", "B"),
-                   help="Background color")
+                   help=i18n.t("help_notify_bg_color"))
     p.add_argument("--duration", type=int, default=5, metavar="SEC",
-                   help="Display duration in seconds (default: 5)")
+                   help=i18n.t("help_notify_duration"))
     p.add_argument("--repeat", type=int, default=1, metavar="N",
-                   help="Number of times to repeat (default: 1)")
+                   help=i18n.t("help_notify_repeat"))
     p.add_argument("--rainbow", action="store_true",
-                   help="Enable rainbow text color effect")
+                   help=i18n.t("help_notify_rainbow"))
     p.add_argument("--icon", metavar="NAME",
-                   help="Icon name from the device icon set")
+                   help=i18n.t("help_notify_icon"))
     p.add_argument("--sound", metavar="FILE",
-                   help="Sound file to play (RTTTL or MP3 name)")
+                   help=i18n.t("help_notify_sound"))
     p.set_defaults(func=_handle)
 
 
