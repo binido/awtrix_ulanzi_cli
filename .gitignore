@@ -1,0 +1,14 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# uv
+.venv/
+
+# Build
+dist/
+*.egg-info/
+
+# App config
+config.json

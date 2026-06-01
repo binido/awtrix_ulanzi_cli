@@ -1,0 +1,19 @@
+{
+  "welcome": "Welcome to AWTRIX Ulanzi CLI!",
+  "select_language": "Select interface language / Выберите язык интерфейса:",
+  "lang_option_en": "  1. English",
+  "lang_option_ru": "  2. Русский (Russian)",
+  "lang_prompt": "Enter 1 or 2: ",
+  "lang_invalid": "Invalid choice. Please enter 1 or 2.",
+  "enter_ip": "Enter AWTRIX device IP address (e.g. 192.168.1.100): ",
+  "ip_invalid_format": "Invalid IP address format. Please try again.",
+  "connecting": "Connecting to device at {ip}...",
+  "connect_success": "Successfully connected to AWTRIX device!",
+  "device_version": "  Firmware version: {version}",
+  "connect_timeout": "Connection timed out. Check that the device is on and reachable.",
+  "connect_error": "Could not reach device: {error}",
+  "connect_not_awtrix": "Device responded, but does not appear to be an AWTRIX 3 device. Check the IP and try again.",
+  "config_saved": "Configuration saved. Setup complete!",
+  "already_configured": "Device configured at {ip}.",
+  "error_unknown": "An unexpected error occurred: {error}"
+}

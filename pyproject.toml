@@ -1,0 +1,18 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "awtrix-ulanzi-cli"
+version = "0.1.0"
+description = "CLI utility for AWTRIX 3 / Ulanzi smart clock"
+requires-python = ">=3.10"
+dependencies = [
+    "requests>=2.31.0",
+]
+
+[project.scripts]
+awtrix = "cli.main:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["awtrix", "cli"]
