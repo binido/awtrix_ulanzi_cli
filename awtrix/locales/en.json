@@ -44,5 +44,11 @@
   "indicator_set": "Indicator {index} set to {state}.",
   "indicator_off": "off",
   "indicator_invalid_color": "Color values must be three integers between 0 and 255.",
-  "indicator_invalid_args": "Usage: awtrix indicator <1|2|3> R G B [--blink MS] [--fade MS]  |  ... off"
+  "indicator_invalid_args": "Usage: awtrix indicator <1|2|3> R G B [--blink MS] [--fade MS]  |  ... off",
+
+  "repl_welcome": "Interactive shell started. Type 'help' for commands, 'exit' or Ctrl+D to quit.",
+  "repl_hint": "Tip: Tab — autocomplete, ↑/↓ — history, Ctrl+C — cancel line.",
+  "repl_parse_error": "Parse error: {error}",
+  "repl_no_init": "Run 'awtrix init' outside the shell to reconfigure.",
+  "repl_already_in_shell": "Already in interactive shell."
 }

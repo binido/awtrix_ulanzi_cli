@@ -9,6 +9,7 @@ description = "CLI utility for AWTRIX 3 / Ulanzi smart clock"
 requires-python = ">=3.10"
 dependencies = [
     "requests>=2.31.0",
+    "prompt_toolkit>=3.0",
 ]
 
 [project.scripts]

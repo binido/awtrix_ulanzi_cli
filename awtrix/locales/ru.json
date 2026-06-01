@@ -44,5 +44,11 @@
   "indicator_set": "Индикатор {index} установлен: {state}.",
   "indicator_off": "выкл",
   "indicator_invalid_color": "Цвет — три целых числа от 0 до 255.",
-  "indicator_invalid_args": "Использование: awtrix indicator <1|2|3> R G B [--blink MS] [--fade MS]  |  ... off"
+  "indicator_invalid_args": "Использование: awtrix indicator <1|2|3> R G B [--blink MS] [--fade MS]  |  ... off",
+
+  "repl_welcome": "Интерактивная оболочка запущена. Введите 'help' для справки, 'exit' или Ctrl+D для выхода.",
+  "repl_hint": "Подсказка: Tab — автодополнение, ↑/↓ — история, Ctrl+C — отмена строки.",
+  "repl_parse_error": "Ошибка разбора: {error}",
+  "repl_no_init": "Запустите 'awtrix init' вне оболочки для повторной настройки.",
+  "repl_already_in_shell": "Интерактивная оболочка уже запущена."
 }

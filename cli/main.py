@@ -21,6 +21,7 @@ def _build_parser() -> argparse.ArgumentParser:
     sub = parser.add_subparsers(dest="command", metavar="<command>")
 
     sub.add_parser("init", help="Run the setup wizard")
+    sub.add_parser("shell", help="Start interactive shell (default when no command given)")
 
     p_status = sub.add_parser("status", help="Show device stats")
     p_status.set_defaults(func=_handle_status)
@@ -58,10 +59,13 @@ def main() -> None:
         run_init(config, i18n)
         return
 
+    if args.command in (None, "shell"):
+        from cli.repl import run_repl
+        run_repl(config.config.device_ip, parser, i18n)
+        return
+
     func = getattr(args, "func", None)
     if func is None:
-        print(i18n.t("already_configured", ip=config.config.device_ip))
-        print()
         parser.print_help()
         return
 
