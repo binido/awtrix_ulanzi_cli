@@ -13,7 +13,7 @@ CLI-утилита для управления умными часами [Ulanzi
 ## Установка
 
 ```bash
-git clone https://github.com/ArtyomPimenov/awtrix_ulanzi_cli.git
+git clone https://github.com/binido/awtrix_ulanzi_cli.git
 cd awtrix_ulanzi_cli
 uv sync
 ```
