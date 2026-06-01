@@ -15,5 +15,34 @@
   "connect_not_awtrix": "Device responded, but does not appear to be an AWTRIX 3 device. Check the IP and try again.",
   "config_saved": "Configuration saved. Setup complete!",
   "already_configured": "Device configured at {ip}.",
-  "error_unknown": "An unexpected error occurred: {error}"
+  "error_unknown": "An unexpected error occurred: {error}",
+
+  "status_header": "Device status:",
+  "status_version": "Version :",
+  "status_battery": "Battery :",
+  "status_ram":     "RAM     :",
+  "status_uptime":  "Uptime  :",
+
+  "power_set": "Display turned {state}.",
+  "reboot_sent": "Reboot command sent.",
+
+  "brightness_set": "Brightness set to {value}.",
+  "brightness_range_error": "Value must be between 0 and 255.",
+
+  "settings_key_not_found": "Key '{key}' not found in device settings.",
+  "settings_set_ok": "{key} = {value}",
+  "settings_usage": "Usage: awtrix settings get [KEY]  |  awtrix settings set KEY VALUE",
+
+  "notify_sent": "Notification sent.",
+
+  "app_next": "Switched to next app.",
+  "app_prev": "Switched to previous app.",
+  "app_switched": "Switched to app '{name}'.",
+  "app_list_empty": "No apps in rotation.",
+  "app_usage": "Usage: awtrix app next | prev | list | switch <name>",
+
+  "indicator_set": "Indicator {index} set to {state}.",
+  "indicator_off": "off",
+  "indicator_invalid_color": "Color values must be three integers between 0 and 255.",
+  "indicator_invalid_args": "Usage: awtrix indicator <1|2|3> R G B [--blink MS] [--fade MS]  |  ... off"
 }

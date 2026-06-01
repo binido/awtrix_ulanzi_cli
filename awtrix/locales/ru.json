@@ -15,5 +15,34 @@
   "connect_not_awtrix": "Устройство ответило, но не является AWTRIX 3. Проверьте IP-адрес и попробуйте снова.",
   "config_saved": "Конфигурация сохранена. Первоначальная настройка завершена!",
   "already_configured": "Устройство настроено по адресу {ip}.",
-  "error_unknown": "Непредвиденная ошибка: {error}"
+  "error_unknown": "Непредвиденная ошибка: {error}",
+
+  "status_header": "Статус устройства:",
+  "status_version": "Версия  :",
+  "status_battery": "Батарея :",
+  "status_ram":     "ОЗУ     :",
+  "status_uptime":  "Аптайм  :",
+
+  "power_set": "Дисплей переключён: {state}.",
+  "reboot_sent": "Команда перезагрузки отправлена.",
+
+  "brightness_set": "Яркость установлена: {value}.",
+  "brightness_range_error": "Значение должно быть от 0 до 255.",
+
+  "settings_key_not_found": "Ключ '{key}' не найден в настройках устройства.",
+  "settings_set_ok": "{key} = {value}",
+  "settings_usage": "Использование: awtrix settings get [KEY]  |  awtrix settings set KEY VALUE",
+
+  "notify_sent": "Уведомление отправлено.",
+
+  "app_next": "Переключено на следующее приложение.",
+  "app_prev": "Переключено на предыдущее приложение.",
+  "app_switched": "Переключено на приложение '{name}'.",
+  "app_list_empty": "Нет приложений в ротации.",
+  "app_usage": "Использование: awtrix app next | prev | list | switch <name>",
+
+  "indicator_set": "Индикатор {index} установлен: {state}.",
+  "indicator_off": "выкл",
+  "indicator_invalid_color": "Цвет — три целых числа от 0 до 255.",
+  "indicator_invalid_args": "Использование: awtrix indicator <1|2|3> R G B [--blink MS] [--fade MS]  |  ... off"
 }

@@ -138,6 +138,13 @@ class AwtrixClient:
         self._post(f"/api/custom?name={name}", payload)
 
     # ------------------------------------------------------------------
+    # Indicators
+    # ------------------------------------------------------------------
+
+    def set_indicator(self, index: int, payload: dict[str, Any]) -> None:
+        self._post(f"/api/indicator{index}", payload)
+
+    # ------------------------------------------------------------------
     # Lifecycle
     # ------------------------------------------------------------------
 

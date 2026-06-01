@@ -7,6 +7,10 @@ from awtrix.client import AwtrixClient, AwtrixConnectionError
 from awtrix.config import ConfigManager
 from awtrix.i18n import I18n
 from cli.init_flow import run_init
+import cli.commands.apps as cmd_apps
+import cli.commands.display as cmd_display
+import cli.commands.notify as cmd_notify
+import cli.commands.power as cmd_power
 
 
 def _build_parser() -> argparse.ArgumentParser:
@@ -17,22 +21,26 @@ def _build_parser() -> argparse.ArgumentParser:
     sub = parser.add_subparsers(dest="command", metavar="<command>")
 
     sub.add_parser("init", help="Run the setup wizard")
-    sub.add_parser("status", help="Show device stats")
+
+    p_status = sub.add_parser("status", help="Show device stats")
+    p_status.set_defaults(func=_handle_status)
+
+    cmd_power.register(sub)
+    cmd_display.register(sub)
+    cmd_notify.register(sub)
+    cmd_apps.register(sub)
 
     return parser
 
 
-def _cmd_status(config: ConfigManager, i18n: I18n) -> int:
-    ip = config.config.device_ip
-    assert ip is not None  # guarded by caller
-    print(i18n.t("already_configured", ip=ip))
+def _handle_status(args: argparse.Namespace, client: AwtrixClient, i18n: I18n) -> int:
     try:
-        with AwtrixClient(ip) as client:
-            stats = client.get_stats()
-        print(f"  Version : {stats.version}")
-        print(f"  Battery : {stats.battery}%")
-        print(f"  RAM     : {stats.ram} bytes free")
-        print(f"  Uptime  : {stats.uptime}s")
+        stats = client.get_stats()
+        print(i18n.t("status_header"))
+        print(f"  {i18n.t('status_version')} {stats.version}")
+        print(f"  {i18n.t('status_battery')} {stats.battery}%")
+        print(f"  {i18n.t('status_ram')}     {stats.ram} bytes")
+        print(f"  {i18n.t('status_uptime')}  {stats.uptime}s")
         return 0
     except AwtrixConnectionError as exc:
         print(i18n.t("connect_error", error=str(exc)))
@@ -50,8 +58,17 @@ def main() -> None:
         run_init(config, i18n)
         return
 
-    if args.command == "status":
-        sys.exit(_cmd_status(config, i18n))
-    else:
+    func = getattr(args, "func", None)
+    if func is None:
         print(i18n.t("already_configured", ip=config.config.device_ip))
+        print()
         parser.print_help()
+        return
+
+    ip = config.config.device_ip
+    assert ip is not None
+    try:
+        with AwtrixClient(ip) as client:
+            sys.exit(func(args, client, i18n))
+    except KeyboardInterrupt:
+        sys.exit(0)
