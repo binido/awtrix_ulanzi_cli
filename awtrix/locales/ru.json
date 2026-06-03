@@ -34,8 +34,8 @@
   "help_brightness_auto": "Включить или выключить автояркость (по умолчанию: on)",
   "example_brightness": "brightness 128  |  brightness --auto  |  brightness --auto off",
 
-  "settings_key_not_found": "Ключ '{key}' не найден в настройках устройства.",
-  "settings_set_ok": "{key} = {value}",
+  "settings_key_not_found": "Ключ '{setting_key}' не найден в настройках устройства.",
+  "settings_set_ok": "{setting_key} = {value}",
   "settings_usage": "Использование: awtrix settings get [KEY]  |  awtrix settings set KEY VALUE",
 
   "notify_sent": "Уведомление отправлено.",

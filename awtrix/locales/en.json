@@ -34,8 +34,8 @@
   "help_brightness_auto": "Enable or disable auto-brightness (default: on)",
   "example_brightness": "brightness 128  |  brightness --auto  |  brightness --auto off",
 
-  "settings_key_not_found": "Key '{key}' not found in device settings.",
-  "settings_set_ok": "{key} = {value}",
+  "settings_key_not_found": "Key '{setting_key}' not found in device settings.",
+  "settings_set_ok": "{setting_key} = {value}",
   "settings_usage": "Usage: awtrix settings get [KEY]  |  awtrix settings set KEY VALUE",
 
   "notify_sent": "Notification sent.",

@@ -76,7 +76,7 @@ def _handle_settings_get(args: argparse.Namespace, client: AwtrixClient, i18n: I
     if args.key:
         key = args.key.upper()
         if key not in all_settings:
-            print(i18n.t("settings_key_not_found", key=key))
+            print(i18n.t("settings_key_not_found", setting_key=key))
             return 1
         print(f"{key} = {all_settings[key]}")
     else:
@@ -86,11 +86,11 @@ def _handle_settings_get(args: argparse.Namespace, client: AwtrixClient, i18n: I
 
 
 def _handle_settings_set(args: argparse.Namespace, client: AwtrixClient, i18n: I18n) -> int:
-    key = args.key.upper()
+    setting_key = args.key.upper()
     value = _parse_value(args.value)
     try:
-        client.update_settings({key: value})
-        print(i18n.t("settings_set_ok", key=key, value=value))
+        client.update_settings({setting_key: value})
+        print(i18n.t("settings_set_ok", setting_key=setting_key, value=value))
         return 0
     except AwtrixConnectionError as exc:
         print(i18n.t("connect_error", error=str(exc)))
